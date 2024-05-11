@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Home Page {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container text-center my-5">
+    <br></br>
+    <h1 class="mb-4"><b>{{ user.username }}'s Profile</b></h1>
+    {% if submissions %}
+    {% else %}
+    <br>
+    <h1 class="mb-4">No Submissions Yet</h1>
+    {% endif %}
+</div>
+
+<div class="container overflow-auto" style="max-height: 70vh; max-width: 90vw;">
+    {% if user.is_authenticated %}
+        {% if user.site_admin != True %}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for submission in submissions %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column text-dark">
+                            <h5 class="card-title text-dark">ID Number: {{ submission.id }}</h5>
+                            <p class="card-text text-dark">Subject: {{ submission.subject }}</p>
+                            <p class="card-text text-dark">Text: {{ submission.text }}</p>
+                            <p class="card-text text-dark">Tagged: {{ submission.tag }}</p>
+                            <p class="card-text text-dark">Status: {{ submission.status }}</p>
+                            <p class="card-text text-dark">Response: {{ submission.admin_response }}</p>
+                            <p class="card-text text-dark">Files:</p>
+                            {% for file in submission.file_set.all %}
+                            <p class="card-text text-dark">
+                                <a href="{{ file.file.url }}" target="_blank" class="link-primary">{{ file.file.name }}</a>
+                            </p>
+                            {% endfor %}
+                            <form action="{% url 'main:delete_submission' submission.pk %}" method="POST" class="mt-auto">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Delete Submission</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You are an admin, you should not be here</p>
+        {% endif %}
+    {% else %}
+        <p>You are not currently logged in</p>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+body {
+    background-image: url('uva_sunset_aerial.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+html {
+    scroll-behavior: smooth;
+}
+.margins {
+    margin-bottom: 10px !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+}

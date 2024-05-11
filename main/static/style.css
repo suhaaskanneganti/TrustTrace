@@ -1,0 +1,47 @@
+html, body {
+    overflow-y: auto;
+}
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('uva_sunset_aerial.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.scrollable-div::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 10px;
+}
+
+/* Customizes the scrollbar's track (the part the thumb moves along) */
+.scrollable-div::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Sets the width of the scrollbar */
+.scrollable-div::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* This will change the color of all text inside elements with the class 'animated-text' to white */
+.animated-text {
+    color: white;
+}
+
+/* If you want to target headings specifically, you can do so by specifying the tag along with the class */
+h1.animated-text, h3.animated-text {
+    color: white;
+}
+
+/* If there are other text elements without the 'animated-text' class, you can target them individually */
+p, a, div {
+    color: white;
+}
+.navbar-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    
+}

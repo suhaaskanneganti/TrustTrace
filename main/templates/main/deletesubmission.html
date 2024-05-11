@@ -1,0 +1,30 @@
+{% extends 'main/base.html'%}
+{% block title %} Home Page {% endblock%}
+{% load crispy_forms_tags %}
+{% block content%}
+<style>
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh; 
+        text-align: center; 
+    }
+    .message {
+        font-size: large;
+    }
+</style>
+<div class="centered-container">
+    <div>
+        <p class="message">Submission Deleted!</p>
+        <br>
+        <button class="btn btn-primary"> 
+            <a href="/" class="text-light" style="text-decoration:none">
+               Go Back to Home Page
+            </a>
+        </button>
+        
+    </div>
+</div>
+
+{% endblock %}
